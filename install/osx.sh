@@ -43,8 +43,8 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 #defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
 # Show remaining battery time; hide percentage
-# defaults write com.apple.menuextra.battery ShowPercent -string "NO"
-# defaults write com.apple.menuextra.battery ShowTime -string "YES"
+defaults write com.apple.menuextra.battery ShowPercent -string "NO"
+defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
 # echo "Always show scrollbars"
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Auto"
@@ -144,6 +144,13 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 echo "Enable tap to click (Trackpad)"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+
+echo "Enable Three fingers dragging (Trackpad)"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 0
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 1
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 0
 
 #echo "Map bottom right Trackpad corner to right-click"
 #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2

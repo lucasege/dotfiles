@@ -1,9 +1,9 @@
 # gitconfig
 [user]
-    name = Nick Nisi
-    email = nick@nisi.org
+	name = Mariano Cortesi
+	email = mcortesi@gmail.com
 [github]
-    user = nicknisi
+	user = mcortesi
 [init]
     templatedir = ~/.dotfiles/git/templates
 [alias]
@@ -12,12 +12,12 @@
     delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
     # diff = diff --ignore-space-at-eol -b -w --ignore-blank-lines
     d = "!git diff --ignore-space-at-eol -b -w --ignore-blank-lines -- ':!**/package-lock.json' ':!**/yarn.lock'"
-    cnv = commit --no-verify
-    pnv = push --no-verify
+    # cnv = commit --no-verify
+    # pnv = push --no-verify
     co = checkout
-    cob = checkout -b
+    # cob = checkout -b
     s = status --short
-    ss  = status
+    st  = status
     br = branch -v
     addnw = "!sh -c 'git diff -U0 -w --no-color \"$@\" | git apply --cached --ignore-whitespace --unidiff-zero -'"
     cane = commit --amend --no-edit
@@ -45,15 +45,15 @@
     deleted = "!git log --diff-filter=D --summary | grep delete"
 
     # create an empty commit
-    empty = commit --allow-empty
+    # empty = commit --allow-empty
 
     # current branch
     cbr = rev-parse --abbrev-ref HEAD
 
     # submodule shortcuts
-    si = submodule init
-    su = submodule update
-    sub = "!git submodule sync && git submodule update"
+    # si = submodule init
+    # su = submodule update
+    # sub = "!git submodule sync && git submodule update"
 
     # show number of commits per contributer, sorted
     count = shortlog -sn
@@ -64,17 +64,17 @@
     cleanup = "!git remote prune origin && git gc && git clean -df && git stash clear"
 
     # rebase the current branch with changes from upstream remote
-    update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`
+    # update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`
 
     # tag aliases
     # show the last tag
     lt = describe --tags --abbrev=0
 
     # assume aliases
-    assume = update-index --assume-unchanged
-    unassume = update-index --no-assume-unchanged
-    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
-    unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+    # assume = update-index --assume-unchanged
+    # unassume = update-index --no-assume-unchanged
+    # assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+    # unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
 
     # clean up all 
     forget = "!git fetch -p origin && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"

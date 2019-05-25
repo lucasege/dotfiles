@@ -36,6 +36,11 @@ formulas=(
     git-standup
     entr
     zplug
+    jq
+    nvm 
+    yarn 
+    watchman
+    go
 )
 
 for formula in "${formulas[@]}"; do
