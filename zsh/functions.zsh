@@ -7,16 +7,16 @@ function md() {
     cd $1
 }
 
-function ng-stop() {
-    sudo launchctl stop homebrew.mxcl.nginx
-}
+# function ng-stop() {
+#     sudo launchctl stop homebrew.mxcl.nginx
+# }
 
-function ng-start() {
-    sudo launchctl start homebrew.mxcl.nginx
-}
-function ng-restart() {
-     sudo launchctl start homebrew.mxcl.nginx
-}
+# function ng-start() {
+#     sudo launchctl start homebrew.mxcl.nginx
+# }
+# function ng-restart() {
+#      sudo launchctl start homebrew.mxcl.nginx
+# }
 
 function dns-restart() {
     sudo launchctl stop homebrew.mxcl.dnsmasq
@@ -59,4 +59,27 @@ function escape() {
 function unidecode() {
     perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
     echo # newline
+}
+
+# alias git as g
+function g() {
+    if [[ $# > 0 ]]; then
+        # if there are arguments, send them to git
+        git $@
+    else
+        # otherwise, run git status
+        git st
+    fi
+}
+
+# Install (one or multiple) selected application(s)
+# using "brew search" as source input
+# mnemonic [B]rew [I]nstall [P]lugin
+function brew-install() {
+  local inst=$(brew search $1 | fzf -m)
+
+  if [[ $inst ]]; then
+    for prog in $(echo $inst);
+    do; brew install $prog; done;
+  fi
 }

@@ -7,12 +7,12 @@ Obviously this setup works for me, a JavaScript developer on macOS, but this par
 
 ## Contents
 
-+ [Initial Setup and Installation](#initial-setup-and-installation)
-+ [ZSH Setup](#zsh-setup)
-+ [Prompt](#prompt)
-+ [Vim and Neovim Setup](#vim-and-neovim-setup)
-+ [Fonts](#fonts)
-+ [Tmux](#tmux-configuration)
+-   [Initial Setup and Installation](#initial-setup-and-installation)
+-   [ZSH Setup](#zsh-setup)
+-   [Prompt](#prompt)
+-   [Vim and Neovim Setup](#vim-and-neovim-setup)
+-   [Fonts](#fonts)
+-   [Tmux](#tmux-configuration)
 
 ## Initial Setup and Installation
 
@@ -32,7 +32,7 @@ If on OSX, you will need to install the XCode CLI tools before continuing. To do
 ➜ xcode-select --install
 ```
 
-Then, clone the dotfiles repository to your home directory as `~/.dotfiles`. 
+Then, clone the dotfiles repository to your home directory as `~/.dotfiles`.
 
 ```bash
 ➜ git clone https://github.com/nicknisi/dotfiles.git ~/.dotfiles
@@ -42,20 +42,20 @@ Then, clone the dotfiles repository to your home directory as `~/.dotfiles`.
 
 `install.sh` will start by initializing the submodules used by this repository (if any). **Read through this file and comment out anything you don't want installed.** Then, it will install all symbolic links into your home directory. Every file with a `.symlink` extension will be symlinked to the home directory with a `.` in front of it. As an example, `vimrc.symlink` will be symlinked in the home directory as `~/.vimrc`. Then, this script will create a `~/.vim-tmp` directory in your home directory, as this is where vim is configured to place its temporary files. Additionally, all files in the `$DOTFILES/config` directory will be symlinked to the `~/.config/` directory for applications that follow the [XDG base directory specification](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html), such as neovim.
 
-Next, the install script will perform a check to see if it is running on an OSX machine. If so, it will install Homebrew if it is not currently installed and will install the homebrew packages listed in [`brew.sh`](install/brew.sh). Then, it will run [`osx.sh`](install/osx.sh) and change some OSX configurations. This file is pretty well documented and so it is advised that you __read through and comment out any changes you do not want__. Next, nginx (installed from Homebrew) will be configured with the provided configuration file. If a `nginx.conf` file already exists in `/usr/local/etc`, a backup will be made at `/usr/local/etc/nginx/nginx.conf.original`.
+Next, the install script will perform a check to see if it is running on an OSX machine. If so, it will install Homebrew if it is not currently installed and will install the homebrew packages listed in [`brew.sh`](install/brew.sh). Then, it will run [`osx.sh`](install/osx.sh) and change some OSX configurations. This file is pretty well documented and so it is advised that you **read through and comment out any changes you do not want**. Next, nginx (installed from Homebrew) will be configured with the provided configuration file. If a `nginx.conf` file already exists in `/usr/local/etc`, a backup will be made at `/usr/local/etc/nginx/nginx.conf.original`.
 
 ## ZSH Setup
 
 ZSH is configured in the `zshrc.symlink` file, which will be symlinked to the home directory. The following occurs in this file:
 
-* set the `EDITOR` to nvim
-* Load any `~/.terminfo` setup
-* Set the `CODE_DIR` variable, pointing to the location where the code projects exist for exclusive autocompletion with the `c` command
-* Recursively search the `$DOTFILES/zsh` directory for files ending in .zsh and source them
-* Setup zplug plugin manager for zsh plugins and installed them.
-* source a `~/.localrc` if it exists so that additional configurations can be made that won't be kept track of in this dotfiles repo. This is good for things like API keys, etc.
-* Add the `~/bin` and `$DOTFILES/bin` directories to the path
-* And more...
+-   set the `EDITOR` to nvim
+-   Load any `~/.terminfo` setup
+-   Set the `CODE_DIR` variable, pointing to the location where the code projects exist for exclusive autocompletion with the `c` command
+-   Recursively search the `$DOTFILES/zsh` directory for files ending in .zsh and source them
+-   Setup zplug plugin manager for zsh plugins and installed them.
+-   source a `~/.localrc` if it exists so that additional configurations can be made that won't be kept track of in this dotfiles repo. This is good for things like API keys, etc.
+-   Add the `~/bin` and `$DOTFILES/bin` directories to the path
+-   And more...
 
 ### Prompt
 
@@ -69,17 +69,17 @@ It does this by writing the actual text that will be displayed int he prompt to 
 
 The git info shown on the `RPROMPT` displays the current branch name, along with the following symbols.
 
--  `+` - New files were added
--  `!` - Existing files were modified
--  `?` - Untracked files exist that are not ignored
--  `»` - Current changes include file renaming
--  `✘` - An existing tracked file has been deleted
--  `$` - There are currently stashed files
--  `=` - There are unmerged files
--  `⇡` - Branch is ahead of the remote (indicating a push is needed)
--  `⇣` - Branch is behind the remote (indicating a pull is needed)
--  `⇕` - The branches have diverged (indicating history has changed and maybe a force-push is needed)
--  `✔` - The current working directory is clean
+-   `+` - New files were added
+-   `!` - Existing files were modified
+-   `?` - Untracked files exist that are not ignored
+-   `»` - Current changes include file renaming
+-   `✘` - An existing tracked file has been deleted
+-   `$` - There are currently stashed files
+-   `=` - There are unmerged files
+-   `⇡` - Branch is ahead of the remote (indicating a push is needed)
+-   `⇣` - Branch is behind the remote (indicating a pull is needed)
+-   `⇕` - The branches have diverged (indicating history has changed and maybe a force-push is needed)
+-   `✔` - The current working directory is clean
 
 #### Jobs Prompt
 
@@ -94,7 +94,7 @@ If a `package.json` file or a `node_modules` directory exists in the current wor
 [Neovim](https://neovim.io/) is a fork and drop-in replacement for vim. in most cases, you would not notice a difference between the two, other than Neovim allows plugins to run asynchronously so that they do not freeze the editor, which is the main reason I have switched over to it. Vim and Neovim both use Vimscript and most plugins will work in both (all of the plugins I use do work in both Vim and Neovim). For this reason, they share the same configuration files in this setup. Neovim uses the [XDG base directory specification](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html) which means it won't look for a `.vimrc` in your home directory. Instead, its configuration looks like the following:
 
 |                         | Vim        | Neovim                    |
-|-------------------------|------------|---------------------------|
+| ----------------------- | ---------- | ------------------------- |
 | Main Configuratin File  | `~/.vimrc` | `~/.config/nvim/init.vim` |
 | Configuration directory | `~/.vim`   | `~/.config/nvim`          |
 
@@ -114,7 +114,7 @@ vim and neovim should just work once the correct plugins are installed. To insta
 
 ## Fonts
 
-I am currently using [Operator Mono](http://www.typography.com/fonts/operator/styles/operatormonoscreensmart) as my default font which is a paid font ($199 US) and does not include Powerline support. You do not need this font at all and there is nothing directly referencing it in the setup. For a great, free programming font, check out Mozilla's [Fira](http://mozilla.github.io/Fira/). In addition to this, I do have [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) installed and configured to be used for non-ascii characters via iTerm2's profile settings. If you would prefer not to do this, then simply remove the `Plug 'ryanoasis/vim-devicons'` plugin from vim/nvim.
+I am currently using [Operator Mono](http://www.typography.com/fonts/operator/styles/operatormonoscreensmart) as my default font which is a paid font (\$199 US) and does not include Powerline support. You do not need this font at all and there is nothing directly referencing it in the setup. For a great, free programming font, check out Mozilla's [Fira](http://mozilla.github.io/Fira/). In addition to this, I do have [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) installed and configured to be used for non-ascii characters via iTerm2's profile settings. If you would prefer not to do this, then simply remove the `Plug 'ryanoasis/vim-devicons'` plugin from vim/nvim.
 
 ## Tmux Configuration
 
@@ -124,4 +124,68 @@ When tmux starts up, [login-shell](bin/login-shell) will be run and if it determ
 
 ## Questions
 
-If you have questions, notice issues,  or would like to see improvements, please open an [issue](https://github.com/nicknisi/dotfiles/issues/new) and I'm happy to help you out!
+If you have questions, notice issues, or would like to see improvements, please open an [issue](https://github.com/nicknisi/dotfiles/issues/new) and I'm happy to help you out!
+
+## Steps
+
+Install Everything
+
+```
+cd .dotfiles
+./install.sh
+nvim +PlugInstall
+```
+
+## Cool Stuff / Instruction Manuals
+
+So a lot of things where installed... who do i used them?
+
+## Shell Magic
+
+### ZSH
+
+Zsh is a droppin replaced for bash. So it's the same but much better.
+
+Zsh users, typically use a plugin manager to install other features. We use `zplug` (check `zplug.zsh`)
+
+It's configured with some cool settings (most of them are zplug plugins which you can comment out):
+
+-   syntax-highlighting: Your command line with colors
+-   auto-suggest: cli commands are auto completed with suggestion (just press TAB or Right Arrow to accept them)
+-   completions: zsh has an awesome completion system. Just press TAB
+-   cool prompt: Show git info, plus node info.
+-   touchbar support: Custom buttons to see git status, yarn scripts, etc.
+-   nvm support: Automatically installs nvm. Autoloads node version based on the `.nvmrc` when doing `cd`
+-   iTerm2 tab colors: Tab colors changed based on the directory
+
+### FZF
+
+Provides fuzzy search. Main Uses:
+
+-   **cd to any subdirectory**: Press `ALT-C` and a menu will appear. Choose dir (provided by fzf)
+-   **CTRL-R with steroids**: View your command history in a menu. fuzzy search
+-   **Paste file wherever**: While on the command line type `CTRL-T` and select a file. It will be pasted in place. For example do `vim <CTRL-T>`
+
+Several other uses can be found: https://github.com/junegunn/fzf
+
+### Z
+
+Simple command to `cd` into most frequest directories.
+
+**Example:** `z celo` will expand to the most frequent directory with `celo` on it.
+
+Also, we use `fz` zplug plugin that actives `fzf` on <TAB> so `z <TAB>` will open the fzf fuzzy search.
+
+### FZF-MARKS
+
+Set marks to directory and the cd to them easily.
+
+Installed as a zplug plugin; uses fzf.
+
+Usage:
+
+-   `mark <name>`: Set a bookmark in current directory with `<name>`
+-   `fzm` or `fzm <pattern>`: Open boomark menu (or go directly if only one match)
+-   `CTRL-G`: Open boomark menu (or go directly if only one match)
+
+## Git
