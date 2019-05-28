@@ -68,6 +68,7 @@
 [alias]
     # Clasic Aliasis
     co = checkout
+    ci = commit
     s = status --short
     st  = status
     br = branch -v
