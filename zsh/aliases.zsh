@@ -69,3 +69,5 @@ alias chrome="/Applications/Google\\ \\Chrome.app/Contents/MacOS/Google\\ \\Chro
 alias canary="/Applications/Google\\ Chrome\\ Canary.app/Contents/MacOS/Google\\ Chrome\\ Canary"
 
 alias pcat='pygmentize -f terminal256 -O style=native -g'
+
+alias j='fzm'
