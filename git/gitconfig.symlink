@@ -72,7 +72,11 @@
     s = status --short
     st  = status
     br = branch -v
-    l = log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    ff = merge --ff-only
+    poh = push origin HEAD
+    log = log --date=relative
+    l = log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --date=relative
+    lg = log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     undo = reset --soft HEAD~1
     amend = commit -a --amend
     remotes = remote -v
@@ -149,3 +153,5 @@
     pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
     # rebase the current branch with changes from upstream remote
     # update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`    
+[fetch]
+	prune = true
