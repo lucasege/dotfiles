@@ -110,6 +110,7 @@ section-title "Installing Android Development Apps"
 brew-cask-ensure adoptopenjdk8
 brew-cask-ensure android-sdk
 brew-cask-ensure android-platform-tools
+brew-cask-ensure android-file-transfer
 brew-cask-ensure android-studio
 
 section-title "Installing GCloud Apps"

@@ -16,7 +16,7 @@ zplug "zsh-users/zsh-completions"
 # Change iTerm Tab colors based on current directoy
 zplug "tysonwolker/iterm-tab-colors"
 
-export NVM_LAZY_LOAD=true
+#export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
 # export NVM_NO_USE=true
 zplug 'lukechilds/zsh-nvm'   # LOADS nvm

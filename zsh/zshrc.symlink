@@ -46,9 +46,17 @@ export ANDROID_NDK=/usr/local/share/android-ndk
 # Default editor for debugging react 
 export REACT_EDITOR=code
 
-
 # ENV Variables for colors
 source "$ZSH/colors.zsh"
+
+############################################
+# Setup Homebrew install completions
+############################################
+
+# Snippet obtained from https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
 
 ############################################
 # Setup FZF
@@ -73,6 +81,17 @@ if command -v hub > /dev/null 2>&1; then
 fi
 
 ############################################
+# Setup Google Cloud SDK
+############################################
+
+if command -v gcloud > /dev/null 2>&1; then
+    # Obtained from `brew cask info google-cloud-sdk`
+    local gcloud_path="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+    source "${gcloud_path}/path.zsh.inc"
+    source "${gcloud_path}/completion.zsh.inc"
+fi
+
+############################################
 # Run zsh child configs
 ############################################
 
@@ -90,8 +109,6 @@ source "$ZSH/aliases.zsh"
 source "$ZSH/functions.zsh"
 fpath=($ZSH/functions $fpath)
 autoload -U $ZSH/functions/*(:t)
-
-source "$ZSH/completion.zsh"
 
 # Run local (not public git friendly) zsh file
 if [[ -a ~/.localrc ]]; then
@@ -131,22 +148,42 @@ export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
 export LESS_TERMCAP_mr=$(tput rev)
 export LESS_TERMCAP_mh=$(tput dim)
 
+
+############################################
+# Initialize ZSH Completion
+############################################
+
+# initialize autocomplete
+autoload -U compinit add-zsh-hook
+compinit
+
+# matches case insensitive for lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
+
+# default to file completion
+zstyle ':completion:*' completer _expand _complete _files _correct _approximate
+
 ############################################
 # Key Bindings
 ############################################
 
+# Set Emacs Mode
+# bindkey -e 
 # move to next word with ctrl-F
-bindkey -M viins "^F" vi-forward-word
+# bindkey -M viins "^F" vi-forward-word
 # Move to end of line with ctrl-E
-bindkey -M viins "^E" vi-add-eol
+# bindkey -M viins "^E" vi-add-eol
 
 # make terminal command navigation sane again
-bindkey '^[^[[D' backward-word
-bindkey '^[^[[C' forward-word
-bindkey '^[[5D' beginning-of-line
-bindkey '^[[5C' end-of-line
-bindkey '^[[3~' delete-char
-bindkey '^?' backward-delete-char
+# bindkey '^[^[[D' backward-word
+# bindkey '^[^[[C' forward-word
+# bindkey '^[[5D' beginning-of-line
+# bindkey '^[[5C' end-of-line
+# bindkey '^[[3~' delete-char
+# bindkey '^?' backward-delete-char
 
 ############################################
 # CELO Stuff
