@@ -14,7 +14,7 @@ zplug 'zsh-users/zsh-autosuggestions'
 zplug "zsh-users/zsh-completions"
 
 # Change iTerm Tab colors based on current directoy
-zplug "tysonwolker/iterm-tab-colors"
+# zplug "tysonwolker/iterm-tab-colors"
 
 #export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
@@ -53,7 +53,7 @@ zplug "urbainvaes/fzf-marks"
 # Powerlevel10k (fork from Powerlevel9k).
 # Lot of configuration options, but quite fast
 # Using purepower theme (https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.purepower)
-zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme, hook-load:"source $ZSH/powerlevel10k-setup.zsh"
+# zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme, hook-load:"source $ZSH/powerlevel10k-setup.zsh"
 
 
 if ! zplug check; then

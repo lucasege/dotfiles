@@ -16,6 +16,74 @@ export REPORTTIME=10
 #     export TERM=tmux-256color-italic
 # fi
 
+############################################
+# Key Bindings
+############################################
+
+# Set Emacs Mode
+bindkey -e 
+# move to next word with ctrl-F
+# bindkey -M viins "^F" vi-forward-word
+# Move to end of line with ctrl-E
+# bindkey -M viins "^E" vi-add-eol
+
+# make terminal command navigation sane again
+# bindkey '^[^[[D' backward-word
+# bindkey '^[^[[C' forward-word
+# bindkey '^[[5D' beginning-of-line
+# bindkey '^[[5C' end-of-line
+# bindkey '^[[3~' delete-char
+# bindkey '^?' backward-delete-char
+
+############################################
+# Configure PROMPT
+############################################
+
+# Configure Prompt
+# source "$ZSH/prompt.zsh"
+
+setopt PROMPT_SUBST
+
+# Reference: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Prompt-Expansion
+# username path >
+export PROMPT="%B%F{cyan}%n %F{blue}%2~%b%#%f "
+
+############################################
+# Configure ZSH History
+############################################
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+# history
+setopt HIST_VERIFY
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_ALL_DUPS
+
+setopt    extended_history       # record timestamp of command in HISTFILE
+setopt    sharehistory           # Share history across terminals
+setopt    hist_ignore_space      # ignore commands that start with space
+
+############################################
+# Other ZSH Options
+############################################
+
+# JOB Control Options
+# -------------------
+setopt NO_BG_NICE
+setopt NO_HUP
+
+# Zsh Function options
+# -------------------
+setopt NO_LIST_BEEP
+setopt LOCAL_OPTIONS
+# If this option is set when a signal trap is set inside a function, 
+# then the previous status of the trap for that signal will be restored when the function exits
+setopt LOCAL_TRAPS
+
+
+#setopt IGNORE_EOF
 
 ############################################
 # ENV Variables
@@ -50,59 +118,11 @@ export REACT_EDITOR=code
 source "$ZSH/colors.zsh"
 
 ############################################
-# Setup Homebrew install completions
-############################################
-
-# Snippet obtained from https://docs.brew.sh/Shell-Completion
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
-############################################
-# Setup FZF
-############################################
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_CTRL_T_COMMAND="fd --color=never"
-export FZF_ALT_C_COMMAND="fd --color=never--type d"
-
-############################################
-# Setup Z
-############################################
-
-# Needs to happen before loading fz zplug plugin
-zpath="$(brew --prefix)/etc/profile.d/z.sh"
-[ -f "${zpath}" ] && source "${zpath}"
-
-############################################
-# Setup hub
-############################################
-if command -v hub > /dev/null 2>&1; then
-    alias git=hub
-fi
-
-############################################
-# Setup Google Cloud SDK
-############################################
-
-if command -v gcloud > /dev/null 2>&1; then
-    # Obtained from `brew cask info google-cloud-sdk`
-    local gcloud_path="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
-    source "${gcloud_path}/path.zsh.inc"
-    source "${gcloud_path}/completion.zsh.inc"
-fi
-
-############################################
 # Run zsh child configs
 ############################################
 
 # Zplug
 source "$ZSH/zplug.zsh"
-
-# Configure Prompt
-# source "$ZSH/prompt.zsh"
-
-# zsh config options
-source "$ZSH/config.zsh"
 
 # Define Aliases & Functions
 source "$ZSH/aliases.zsh"
@@ -148,10 +168,56 @@ export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
 export LESS_TERMCAP_mr=$(tput rev)
 export LESS_TERMCAP_mh=$(tput dim)
 
+############################################
+# Setup Homebrew install completions
+############################################
+
+# Snippet obtained from https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+############################################
+# Setup FZF
+############################################
+ 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_CTRL_T_COMMAND="fd --color=never"
+export FZF_ALT_C_COMMAND="fd --color=never--type d"
+
+############################################
+# Setup Z
+############################################
+
+# Needs to happen before loading fz zplug plugin
+zpath="$(brew --prefix)/etc/profile.d/z.sh"
+[ -f "${zpath}" ] && source "${zpath}"
+
+############################################
+# Setup hub
+############################################
+if command -v hub > /dev/null 2>&1; then
+    alias git=hub
+fi
+
+############################################
+# Setup Google Cloud SDK
+############################################
+
+if command -v gcloud > /dev/null 2>&1; then
+    # Obtained from `brew cask info google-cloud-sdk`
+    local gcloud_path="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+    source "${gcloud_path}/path.zsh.inc"
+    source "${gcloud_path}/completion.zsh.inc"
+fi
 
 ############################################
 # Initialize ZSH Completion
 ############################################
+
+# Prevents aliases on the command line from being internally substituted before completion is attempted. 
+# The effect is to make the alias a distinct command for completion purposes.
+# setopt complete_aliases
 
 # initialize autocomplete
 autoload -U compinit add-zsh-hook
@@ -165,25 +231,6 @@ zstyle ':completion:*' insert-tab pending
 
 # default to file completion
 zstyle ':completion:*' completer _expand _complete _files _correct _approximate
-
-############################################
-# Key Bindings
-############################################
-
-# Set Emacs Mode
-# bindkey -e 
-# move to next word with ctrl-F
-# bindkey -M viins "^F" vi-forward-word
-# Move to end of line with ctrl-E
-# bindkey -M viins "^E" vi-add-eol
-
-# make terminal command navigation sane again
-# bindkey '^[^[[D' backward-word
-# bindkey '^[^[[C' forward-word
-# bindkey '^[[5D' beginning-of-line
-# bindkey '^[[5C' end-of-line
-# bindkey '^[[3~' delete-char
-# bindkey '^?' backward-delete-char
 
 ############################################
 # CELO Stuff

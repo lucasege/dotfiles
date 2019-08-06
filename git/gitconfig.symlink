@@ -4,8 +4,8 @@
 	email = mcortesi@gmail.com
 [github]
 	user = mcortesi
-[init]
-    templatedir = ~/.dotfiles/git/templates
+#[init]
+#    templatedir = ~/.dotfiles/git/templates
 [credential]
 	helper = osxkeychain    
 [core]

@@ -165,7 +165,9 @@ fi
   fi
 
   typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-      dir_writable dir vcs)
+      dir_writable dir)
+  # typeset -ga POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+  #     dir_writable dir vcs)
 
   # typeset -ga POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   #     status command_execution_time background_jobs custom_rprompt context)
