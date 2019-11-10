@@ -1,6 +1,10 @@
 export DOTFILES=$HOME/.dotfiles
 export ZSH=$DOTFILES/zsh
 
+# TODO: check https://dustri.org/b/my-zsh-configuration.html
+# TODO check https://github.com/mika/zsh-pony
+
+
 # Native ZSH feature: https://nuclearsquid.com/writings/reporttime-in-zsh/
 # Report stats for task longer that XX seconds
 export REPORTTIME=10
@@ -77,11 +81,13 @@ setopt NO_HUP
 # Zsh Function options
 # -------------------
 setopt NO_LIST_BEEP
-setopt LOCAL_OPTIONS
+
+# DISABLED SINCE ZPLUG ASSUMES OTHERWISE
+
+# setopt LOCAL_OPTIONS
 # If this option is set when a signal trap is set inside a function, 
 # then the previous status of the trap for that signal will be restored when the function exits
-setopt LOCAL_TRAPS
-
+# setopt LOCAL_TRAPS
 
 #setopt IGNORE_EOF
 
@@ -117,12 +123,12 @@ export REACT_EDITOR=code
 # ENV Variables for colors
 source "$ZSH/colors.zsh"
 
+# LOCALE
+export LC_ALL=en_US.UTF-8
+
 ############################################
 # Run zsh child configs
 ############################################
-
-# Zplug
-source "$ZSH/zplug.zsh"
 
 # Define Aliases & Functions
 source "$ZSH/aliases.zsh"
@@ -177,6 +183,7 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+
 ############################################
 # Setup FZF
 ############################################
@@ -192,6 +199,12 @@ export FZF_ALT_C_COMMAND="fd --color=never--type d"
 # Needs to happen before loading fz zplug plugin
 zpath="$(brew --prefix)/etc/profile.d/z.sh"
 [ -f "${zpath}" ] && source "${zpath}"
+
+############################################
+# ZPLUG Plugins
+############################################
+
+source "$ZSH/zplug.zsh"
 
 ############################################
 # Setup hub
@@ -230,7 +243,14 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 
 # default to file completion
-zstyle ':completion:*' completer _expand _complete _files _correct _approximate
+zstyle ':completion:*' completer _expand _complete _files _correct _approximate _history
+
+# show menu when more than 4 choices, menu has search enabled
+zstyle ':completion:*' menu select=4 search
+
+# prefer verbose option when available
+zstyle ':completion:*' verbose yes
+
 
 ############################################
 # CELO Stuff

@@ -4,7 +4,7 @@ source $ZPLUG_HOME/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # Define TERMINAL colors w/ a script (and fix them)
-zplug 'chriskempson/base16-shell'
+# zplug 'chriskempson/base16-shell'
 
 # https://github.com/zdharma/fast-syntax-highlighting
 # Syntax-highlighting for Zshell (similar to what fish does)
