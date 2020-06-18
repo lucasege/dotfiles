@@ -52,7 +52,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Auto"
 
 #echo "Allow quitting Finder via ⌘ + Q; doing so will also hide desktop icons"
-#defaults write com.apple.finder QuitMenuItem -bool true
+defaults write com.apple.finder QuitMenuItem -bool true
 
 # Disable window animations and Get Info animations in Finder
 # defaults write com.apple.finder DisableAllAnimations -bool true

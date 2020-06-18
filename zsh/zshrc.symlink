@@ -252,19 +252,5 @@ zstyle ':completion:*' menu select=4 search
 zstyle ':completion:*' verbose yes
 
 
-############################################
-# CELO Stuff
-############################################
-
-# Where you keep your Celo stuff
-export CELO_ROOT=$CODE_DIR/celo
-export GETH_BUILD_PATH=$CELO_ROOT/geth/build/bin/
-
 # Your github handle
-export HANDLE=mcortesi
-
-# Run SSH Agent. Use ssh-add to add and remember keys for the session.
-# celo-monorepo will need you to do this with your github key when updating geth dependencies.
-# eval `ssh-agent`
-
-alias celotooljs="$CELO_ROOT/celo-monorepo/packages/celotool/bin/celotooljs.sh"
+export HANDLE=lucasege

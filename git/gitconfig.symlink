@@ -1,13 +1,13 @@
 # gitconfig
 [user]
-	name = Mariano Cortesi
-	email = mcortesi@gmail.com
+	name = Lucas Ege
+	email = lucasege@cs.stanford.edu
 [github]
-	user = mcortesi
+	user = lucasege
 #[init]
 #    templatedir = ~/.dotfiles/git/templates
 [credential]
-	helper = osxkeychain    
+	helper = osxkeychain
 [core]
     excludesfile = ~/.gitignore_global
     pager = less -FXRS -x2

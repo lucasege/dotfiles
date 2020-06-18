@@ -51,15 +51,7 @@ symlink-ensure "rgrc"
 
 section-title "Setup Vim/NeoVim"
 brew-ensure "python"
-brew-ensure "neovim"
-brew-ensure "vim"
 mkdir -p "$HOME/.config"
-mkdir -p "$HOME/.vim-tmp"
-link-ensure "$DOTFILES/nvim" "$HOME/.config/nvim"
-link-ensure "$DOTFILES/nvim" "$HOME/.vim"  
-link-ensure "$DOTFILES/nvim/init.vim" "$HOME/.vimrc"  
-pip2 install --user neovim
-pip3 install --user neovim
 
 section-title "Everyday Dev Packages"
 dev_formulas=(
@@ -90,28 +82,5 @@ brew-ensure-list "${node_formulas[@]}"
 symlink-ensure "node/eslintrc"
 
 
-section-title "GO Development Packages"
-go_formulas=(
-    go
-)
-brew-ensure-list "${go_formulas[@]}" 
-
 section-title "Installing Fonts"
-brew-cask-ensure font-fira-code          # We use this for vscode w/ligatures
 brew-cask-ensure font-firamono-nerd-font # We use this for iterm2
-
-section-title "Installing Everyday Apps"
-brew-cask-ensure google-chrome
-brew-cask-ensure spotify
-brew-cask-ensure iterm2
-brew-cask-ensure visual-studio-code
-
-section-title "Installing Android Development Apps"
-brew-cask-ensure adoptopenjdk8
-brew-cask-ensure android-sdk
-brew-cask-ensure android-platform-tools
-brew-cask-ensure android-file-transfer
-brew-cask-ensure android-studio
-
-section-title "Installing GCloud Apps"
-brew-cask-ensure google-cloud-sdk
